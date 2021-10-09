@@ -4,7 +4,7 @@ import { Image, Card } from "semantic-ui-react";
 const VideoItem = ({ video, onVideoSelect }) => {
   return (
     <Card
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", width: "100%" }}
       onClick={() => {
         onVideoSelect(video);
       }}

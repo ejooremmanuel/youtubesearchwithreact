@@ -6,24 +6,22 @@ import {
   Loader,
   Image,
   Card,
+  Embed,
 } from "semantic-ui-react";
 
 const VideoDetail = ({ showVideo }) => {
   return (
     <div>
       {showVideo ? (
-        <Container unit="netboard">
-          <iframe
-            width="100%"
-            height="300vw"
-            src={`https://www.youtube.com/embed/${showVideo.id.videoId}`}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+        <Container>
+          <Embed
+            id={showVideo.id.videoId}
+            placeholder={showVideo.snippet.thumbnails.medium.url}
+            source="youtube"
+          />
           <Card style={{ width: "100%" }}>
             <Card.Content>
+              <Card.Header>{showVideo.snippet.title}</Card.Header>
               <Card.Description>
                 {showVideo.snippet.description}
               </Card.Description>
@@ -33,7 +31,7 @@ const VideoDetail = ({ showVideo }) => {
       ) : (
         <Segment>
           <Dimmer active>
-            <Loader size="massive">S</Loader>
+            <Loader size="massive">Search a video...</Loader>
           </Dimmer>
 
           <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />

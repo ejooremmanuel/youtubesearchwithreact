@@ -25,18 +25,22 @@ export default class App extends Component {
         <Segment>
           <SearchBar onInputSubmit={this.onInputSubmit} />
         </Segment>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <VideoDetails showVideo={this.state.selectedVideo} />
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Videos
-                onVideoSelect={this.onVideoSelect}
-                videos={this.state.videos}
+        <Grid stackable columns={2}>
+          <Grid.Column>
+            <Segment>
+              <VideoDetails
+                showVideo={this.state.selectedVideo}
+                style={{ marginBottom: "60px" }}
               />
-            </Grid.Column>
-          </Grid.Row>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Videos
+              onVideoSelect={this.onVideoSelect}
+              videos={this.state.videos}
+              style={{ marginTop: "60px" }}
+            />
+          </Grid.Column>
         </Grid>
       </Container>
     );
