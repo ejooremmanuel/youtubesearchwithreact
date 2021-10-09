@@ -16,7 +16,7 @@ export default class SearchBar extends Component {
     return (
       <Form onSubmit={this.onFormSubmit}>
         <Form.Field>
-          <label>Video Search</label>
+          <label>Type a video title you'd like to Search...</label>
           <Input
             value={this.state.myInput}
             placeholder="Search for a video..."

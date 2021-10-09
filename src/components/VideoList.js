@@ -1,6 +1,5 @@
 import React from "react";
 import VideoItem from "./VideoItem";
-import "./VideoList.css";
 
 const VideoList = ({ videos, onVideoSelect }) => {
   // Get a single video item
@@ -13,7 +12,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
       />
     );
   });
-  return <div className="image">{renderedVideos}</div>;
+  return <div>{renderedVideos}</div>;
 };
 
 export default VideoList;

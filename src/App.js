@@ -8,13 +8,21 @@ import VideoDetails from "./components/VideoDetail";
 
 export default class App extends Component {
   state = { videos: [], selectedVideo: null };
+
+  componentDidMount() {
+    this.onInputSubmit("welcome");
+  }
+
   onInputSubmit = async (myInput) => {
     const response = await youtube.get("/search", {
       params: {
         q: myInput,
       },
     });
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0],
+    });
   };
   onVideoSelect = (video) => {
     this.setState({ selectedVideo: video });
@@ -26,19 +34,15 @@ export default class App extends Component {
           <SearchBar onInputSubmit={this.onInputSubmit} />
         </Segment>
         <Grid stackable columns={2}>
-          <Grid.Column>
+          <Grid.Column width={11}>
             <Segment>
-              <VideoDetails
-                showVideo={this.state.selectedVideo}
-                style={{ marginBottom: "60px" }}
-              />
+              <VideoDetails showVideo={this.state.selectedVideo} />
             </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={5}>
             <Videos
               onVideoSelect={this.onVideoSelect}
               videos={this.state.videos}
-              style={{ marginTop: "60px" }}
             />
           </Grid.Column>
         </Grid>
