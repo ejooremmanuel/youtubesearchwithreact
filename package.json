@@ -45,5 +45,8 @@
     "whitelist": [
       "API_KEY"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
   }
 }
